@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0', // Required for Render deployment
-  port: parseInt(process.env.PORT ?? '3000'),
+    host: '0.0.0.0',
+    port: parseInt(process.env.PORT ?? '3000'),
     open: true,
     proxy: {
       '/api': {
@@ -13,6 +13,7 @@ export default defineConfig({
         secure: false,
         changeOrigin: true
       }
-    }
+    },
+    allowedHosts: ['.onrender.com']
   }
 })
